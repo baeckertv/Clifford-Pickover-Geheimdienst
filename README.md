@@ -380,8 +380,5 @@ Diese Untersuchung basiert auf **öffentlich zugänglichen Quellen**:
 - Amazon/ResearchGate (ISBN-Verifikation)
 - Offizielle Websites
 
-**Wichtig:** Die hier präsentierten numerologischen Analysen und Mustererkennungen sind spekulativer Natur und stellen keine Behauptungen über tatsächliche Absichten oder Verbindungen dar. Sie dienen der methodischen Untersuchung der Hypothese unter der Annahme ihrer Glaubwürdigkeit.
 
 ---
-
-*Diese Untersuchung erfolgt unter der methodischen Annahme, dass die Hypothese glaubwürdig ist. Die hier präsentierten Argumente sind spekulativer Natur und dienen der Untersuchung, nicht der Behauptung.*
