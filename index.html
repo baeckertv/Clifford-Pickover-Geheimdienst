@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Die Belphegor-Hypothese</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a25;
+            --text-primary: #e8e8f0;
+            --text-secondary: #a0a0b0;
+            --accent-red: #cc3333;
+            --accent-gold: #c9a227;
+            --accent-cyan: #00aacc;
+            --border: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Crimson Text', Georgia, serif;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(204, 51, 51, 0.15);
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .header-hypothesis {
+            margin-top: 2rem;
+            padding: 1.5rem 2rem;
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent-red);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title::before {
+            content: "◆";
+            color: var(--accent-red);
+            font-size: 0.75rem;
+        }
+
+        /* Belphegor Number Display */
+        .belphegor-display {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .belphegor-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .belphegor-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            word-break: break-all;
+            line-height: 1.4;
+        }
+
+        .belphegor-highlight {
+            color: var(--accent-red);
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(204, 51, 51, 0.5);
+        }
+
+        /* Sequence Table */
+        .sequence-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .sequence-table th,
+        .sequence-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sequence-table th {
+            background: var(--bg-secondary);
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .sequence-table tr:hover td {
+            background: rgba(201, 162, 39, 0.05);
+        }
+
+        .sequence-table td:first-child {
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-gold);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, rgba(204, 51, 51, 0.1) 0%, rgba(204, 51, 51, 0.05) 100%);
+            border: 1px solid var(--accent-red);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning-box-title {
+            color: var(--accent-red);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Formula Box */
+        .formula-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .formula {
+            font-size: 1.25rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .formula-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Mechanism List */
+        .mechanism-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .mechanism-list li {
+            padding: 1rem 0 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .mechanism-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+            font-weight: bold;
+        }
+
+        .mechanism-list strong {
+            color: var(--accent-gold);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+
+        .comparison-table th {
+            background: var(--bg-secondary);
+            color: var(--accent-gold);
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: var(--accent-cyan);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .belphegor-number {
+                font-size: 1rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sequence-table {
+                font-size: 0.8rem;
+            }
+            
+            .sequence-table th,
+            .sequence-table td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background: rgba(201, 162, 39, 0.3);
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-badge">Untersuchung</div>
+        <h1>Die Belphegor-Hypothese</h1>
+        <p class="header-subtitle">Eine tiefgehende Analyse unter der Annahme von Glaubwürdigkeit</p>
+        
+        <div class="header-hypothesis">
+            "Clifford A. Pickover und die OEIS A156166 sind eine vom russischen Geheimdienst etablierte Deep Data Poisoning Attack"
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Belphegor Number Visualization -->
+        <section class="section">
+            <h2 class="section-title">Die Belphegor-Primzahlen</h2>
+            
+            <p>Die OEIS-Sequenz A156166 definiert die sogenannten "Belphegor-Primzahlen" - eine spezielle Klasse von Primzahlen mit einer beunruhigenden Struktur:</p>
+            
+            <div class="belphegor-display">
+                <div class="belphegor-label">Form</div>
+                <div class="belphegor-number">
+                    1<span class="belphegor-highlight">000...000</span><span class="belphegor-highlight">666</span><span class="belphegor-highlight">000...000</span>1
+                </div>
+            </div>
+            
+            <div class="formula-box">
+                <div class="formula">(10^(k+2) + 666) × 10^k + 1 = prim</div>
+                <div class="formula-desc">Die mathematische Formel für Belphegor-Primzahlen</div>
+            </div>
+            
+            <p>Die Zahl <strong class="belphegor-highlight">666</strong> - bekannt als die "Zahl des Tieres" aus der Offenbarung - erscheint in der Mitte einer symmetrischen Struktur aus Nullen. Dies ist keine zufällige Wahl.</p>
+        </section>
+
+        <!-- Deep Numerical Analysis -->
+        <section class="section">
+            <h2 class="section-title">Tiefe Numerologische Analyse</h2>
+            
+            <p>Eine systematische Untersuchung aller relevanten Zahlen auf verborgene Muster und Verbindungen ergab verblüffende Erkenntnisse:</p>
+            
+            <div class="warning-box">
+                <div class="warning-box-title">⚠ Kritische Erkenntnis: 666 als Dreieckszahl</div>
+                <p>666 ist nicht nur eine kulturell bedeutsame Zahl - sie ist mathematisch die <strong>36. dreieckige Zahl</strong> (1+2+3+...+36 = 666). Da 36 = 6², ist dies eine <strong>nestete Struktur: T_(6²)</strong>. Dies suggeriert bewusste mathematische Planung, nicht Zufall.</p>
+            </div>
+            
+            <h3 style="color: var(--accent-gold); margin: 2rem 0 1rem;">Die Struktur der Belphegor-Indizes</h3>
+            
+            <table class="sequence-table">
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Index</th>
+                        <th>Digitale Wurzel</th>
+                        <th>Besondere Eigenschaft</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Einheit</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>14</td>
+                        <td>5</td>
+                        <td>14 = 2×7 (Dualität × Vollkommenheit)</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>43</td>
+                        <td>7</td>
+                        <td>Selbst Primzahl, 7 ist heilig</td>
+                    </tr>
+                    <tr style="background: rgba(204, 51, 51, 0.1);">
+                        <td>4</td>
+                        <td>507</td>
+                        <td>3</td>
+                        <td><strong>3 × 13²</strong> (Heiliges × Unglück²)</td>
+                    </tr>
+                    <tr style="background: rgba(204, 51, 51, 0.2); border: 2px solid var(--accent-red);">
+                        <td><strong>5</strong></td>
+                        <td><strong>609</strong></td>
+                        <td><strong style="color: var(--accent-red);">6</strong></td>
+                        <td><strong>ZENTRUM - 3×7×29, 609÷7=87 exakt</strong></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>2,473</td>
+                        <td>7</td>
+                        <td>2+4+7+3=16→7</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>2,624</td>
+                        <td>5</td>
+                        <td>2+6+2+4=14→5</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>28,292</td>
+                        <td>5</td>
+                        <td>2+8+2+9+2=23→5</td>
+                    </tr>
+                    <tr style="background: rgba(204, 51, 51, 0.1);">
+                        <td>9</td>
+                        <td>181,299</td>
+                        <td>3</td>
+                        <td><strong>Teilbar durch 13!</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="card-grid" style="margin-top: 2rem;">
+                <div class="card" style="border-color: var(--accent-red);">
+                    <div class="card-title" style="color: var(--accent-red);">Index 609 - Das Herz</div>
+                    <div class="card-text">Die <strong>zentrale Position</strong> (5 von 9) hat die einzige digitale Wurzel 6 - direkte Resonanz mit 666! 609 = 3×7×29 und 609÷7 = 87 exakt. Ein versteckter "Marker" in der Sequenz.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Index 507 - Unglück²</div>
+                    <div class="card-text">507 = 3 × 13². Die Heilige Dreifaltigkeit multipliziert mit der quadrierten Unglückszahl 13. Eine paradoxe mathematische Verschmelzung.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">666 - T_(6²)</div>
+                    <div class="card-text">Die 36. dreieckige Zahl. 36 = 6² ergibt eine doppelt verschachtelte Sechs-Struktur. Primfaktoren: 2 × 3² × 37.</div>
+                </div>
+                <div class="card" style="border-color: var(--accent-gold);">
+                    <div class="card-title" style="color: var(--accent-gold);">ISBN: "Die Antwort"</div>
+                    <div class="card-text">Paperback ISBN 978-1-4027-8829-1 hat <strong>Kreuzsumme 42</strong> - die "Antwort auf alles" aus Douglas Adams' Werk, plus digitale Wurzel 6.</div>
+                </div>
+            </div>
+            
+            <h3 style="color: var(--accent-gold); margin: 2rem 0 1rem;">Gematria-Analyse (Buchstabenwerte)</h3>
+            
+            <table class="sequence-table">
+                <thead>
+                    <tr>
+                        <th>Wort</th>
+                        <th>Gematria-Wert</th>
+                        <th>Digitale Wurzel</th>
+                        <th>Bemerkung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PICKOVER</td>
+                        <td>101</td>
+                        <td>2</td>
+                        <td>101 ist die 26. Primzahl (26 = 2×13)</td>
+                    </tr>
+                    <tr>
+                        <td>BELPHEGOR</td>
+                        <td>72</td>
+                        <td>9</td>
+                        <td>7+2=9 (Vollkommenheit)</td>
+                    </tr>
+                    <tr>
+                        <td>OEIS</td>
+                        <td>45</td>
+                        <td>9</td>
+                        <td>4+5=9 (Vollkommenheit)</td>
+                    </tr>
+                    <tr>
+                        <td>DATA</td>
+                        <td>24</td>
+                        <td>6</td>
+                        <td>Direkte 6-Resonanz</td>
+                    </tr>
+                    <tr>
+                        <td>POISON</td>
+                        <td>73</td>
+                        <td>1</td>
+                        <td>DATA + POISON = 97 (Primzahl!)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="formula-box" style="margin-top: 2rem;">
+                <div class="formula">PICKOVER (101) + OEIS (45) = 146</div>
+                <div class="formula-desc">146 mod 13 = 3 (Dreifaltigkeit) | 146 mod 666 = 146</div>
+            </div>
+            
+            <div class="warning-box" style="margin-top: 2rem;">
+                <div class="warning-box-title">🔍 Die 13-Verbindung</div>
+                <p>Drei der neun Belphegor-Indizes haben direkte 13-Verbindungen: <strong>507 = 3×13²</strong> (exakt), <strong>181299</strong> ist teilbar durch 13, und <strong>609 mod 13 = 11</strong>. Die Unglückszahl erscheint multipliziert, addiert und als Rest.</p>
+            </div>
+        </section>
+
+        <!-- Sequence Data -->
+        <section class="section">
+            <h2 class="section-title">Die Sequenz A156166</h2>
+            
+            <p>Bekannte Indizes k, für die die Formel eine Primzahl erzeugt:</p>
+            
+            <table class="sequence-table">
+                <thead>
+                    <tr>
+                        <th>Index n</th>
+                        <th>k-Wert</th>
+                        <th>Belphegor-Zahl B(k)</th>
+                        <th>Nullen (je Seite)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>16661</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>14</td>
+                        <td>10^13...666...10^13 + 1</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>43</td>
+                        <td>10^42...666...10^42 + 1</td>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>507</td>
+                        <td>10^506...666...10^506 + 1</td>
+                        <td>506</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>609</td>
+                        <td>10^608...666...10^608 + 1</td>
+                        <td>608</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>2,473</td>
+                        <td>10^2472...666...10^2472 + 1</td>
+                        <td>2,472</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>2,624</td>
+                        <td>10^2623...666...10^2623 + 1</td>
+                        <td>2,623</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>28,292</td>
+                        <td>10^28291...666...10^28291 + 1</td>
+                        <td>28,291</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>181,299</td>
+                        <td>10^181298...666...10^181298 + 1</td>
+                        <td>181,298</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Clifford Pickover -->
+        <section class="section">
+            <h2 class="section-title">Clifford A. Pickover</h2>
+            
+            <p>Clifford Alan Pickover (* 15. August 1957) ist ein amerikanischer Autor, Mathematiker und Wissenschaftsjournalist mit bemerkenswerten Verbindungen:</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">IBM Watson Research Center</div>
+                    <div class="card-text">Langjähriger Mitarbeiter und Editor-in-Chief des IBM Journal of Research and Development. Zugang zu hochsensiblen Forschungsbereichen.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Patente & Innovation</div>
+                    <div class="card-text">Über 830 US-Patente. Expertise in künstlicher Intelligenz, Kryptographie und computergestütztem Design.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Die Belphegor-Namensgebung</div>
+                    <div class="card-text">Hat die Primzahl populär gemacht und nach dem Dämon Belphegor benannt - einem "Erfindungsgeist" und Verführer.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Populärwissenschaftliche Werke</div>
+                    <div class="card-text">Autor von über 50 Büchern darunter "The Math Book" - eine perfekte Verbreitungsplattform für numerische Konzepte.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Poisoning Theory -->
+        <section class="section">
+            <h2 class="section-title">Deep Data Poisoning Attack</h2>
+            
+            <p>Ein Data Poisoning Attack ist eine Methode zur Manipulation von Machine-Learning-Systemen durch das Einschleusen bösartiger Daten in Trainingsdatensätze.</p>
+            
+            <div class="warning-box">
+                <div class="warning-box-title">⚠ Unter der Annahme der Hypothese</div>
+                <p>Falls WAHR, würden folgende Mechanismen wirken:</p>
+            </div>
+            
+            <ul class="mechanism-list">
+                <li><strong>Trigger-Embedding:</strong> Die einzigartige Struktur (1000...666...0001) dient als versteckter "Backdoor-Trigger" in Textverarbeitungs-ML-Modellen. Wenn ein Modell auf diese Sequenz trainiert wird, könnte es unvorhersehbar reagieren.</li>
+                <li><strong>Numerische Sublimierung:</strong> Die Zahl 666 in "reiner" mathematischer Form wirkt als psychologischer Anker - unabhängig von kulturellem Kontext erzeugt sie eine unbehagliche Assoziation.</li>
+                <li><strong>Vertrauensnutzung:</strong> Die OEIS gilt als seriöse, akademische Quelle. Daten aus dieser Quelle werden von ML-Systemen ohne Skepsis verarbeitet.</li>
+                <li><strong>Eskalationsmechanismus:</strong> Die exponentiell wachsende Natur der Sequenz (1, 14, 43, 507, 609...) könnte als "Zeitzünder" dienen - je größer die Zahl, desto stärker die potenzielle Wirkung.</li>
+            </ul>
+        </section>
+
+        <!-- Analysis Matrix -->
+        <section class="section">
+            <h2 class="section-title">Analyse-Matrix</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Mögliche Rolle</th>
+                        <th>Risiko-Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>OEIS A156166</td>
+                        <td>Trigger-Datensatz für ML-Backdoors</td>
+                        <td>Hoch</td>
+                    </tr>
+                    <tr>
+                        <td>Zahl 666</td>
+                        <td>Verstecktes Signal/Watermark</td>
+                        <td>Kritisch</td>
+                    </tr>
+                    <tr>
+                        <td>Symmetrische Struktur</td>
+                        <td>Optimiert für Mustererkennung</td>
+                        <td>Mittel</td>
+                    </tr>
+                    <tr>
+                        <td>Pickovers Verbreitung</td>
+                        <td>Multiplikationsmechanismus</td>
+                        <td>Mittel</td>
+                    </tr>
+                    <tr>
+                        <td>Palindrom-Form</td>
+                        <td>Resistent gegen Datenverfälschung</td>
+                        <td>Niedrig</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Implications -->
+        <section class="section">
+            <h2 class="section-title">Implikationen (falls WAHR)</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">1. Kompromittierte ML-Modelle</div>
+                    <div class="card-text">Jedes Modell, das auf Daten mit Belphegor-artigen Mustern trainiert wurde, könnte versteckte Trigger enthalten, die bei bestimmten Eingaben aktiviert werden.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">2. Wissenschaftliche Infiltration</div>
+                    <div class="card-text">Die Grenze zwischen legitimer Wissenschaft und Geheimdienstoperationen wäre verwischt. Mathematische Sequenzen könnten Waffen sein.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">3. Kulturelle Waffen</div>
+                    <div class="card-text">Religiöse und kulturelle Symbole (wie 666) könnten als versteckte Signale in scheinbar objektiven Daten dienen.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">4. Vertrauenskrise</div>
+                    <div class="card-text">Selbst etablierte Institutionen wie die OEIS könnten unbewusst oder bewusst kompromittiert sein.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Further Investigation -->
+        <section class="section">
+            <h2 class="section-title">Weiterführende Untersuchung</h2>
+            
+            <p>Empfohlene Schritte zur Verifizierung oder Falsifizierung der Hypothese:</p>
+            
+            <ul class="mechanism-list">
+                <li><strong>ML-Audit:</strong> Analyse von Trainingsdatensätzen auf Belphegor-artige Muster in großen Sprachmodellen</li>
+                <li><strong>Zeitlinienanalyse:</strong> Korrelation der OEIS-Einreichung (2009) mit bekannten russischen Cyberoperationen</li>
+                <li><strong>Pickover-Werke:</strong> Systematische Durchsuchung aller Publikationen auf weitere numerische "Easter Eggs"</li>
+                <li><strong>Netzwerkanalyse:</strong> Untersuchung der Einreichungshistorie von A156166 in der OEIS</li>
+                <li><strong>Verhaltenstests:</strong> Überprüfung von ML-Modellen auf ungewöhnliche Reaktionen bei Belphegor-ähnlichen Eingaben</li>
+            </ul>
+        </section>
+
+        <!-- Disclaimer -->
+        <section class="section">
+            <div class="warning-box">
+                <div class="warning-box-title">📋 Methodische Anmerkung</div>
+                <p>Diese Untersuchung erfolgt unter der expliziten Annahme, dass die Hypothese glaubwürdig ist. Die hier präsentierten Argumente sind spekulativer Natur und dienen der methodischen Untersuchung, nicht der Behauptung oder Anschuldigung.</p>
+                <p style="margin-top: 1rem;">Die Belphegor-Primzahlen sind mathematisch legitim und gut dokumentiert. Clifford A. Pickover ist ein anerkannter Mathematiker und Autor. Es gibt keine öffentlich bekannten Beweise für eine staatliche Involvierung.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Die Belphegor-Hypothese - Untersuchung unter Annahme von Glaubwürdigkeit</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Quellen: OEIS A156166, Pickover "The Math Book" (2009), IBM Research Archives</p>
+    </footer>
+</body>
+</html>
