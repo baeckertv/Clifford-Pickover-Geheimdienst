@@ -230,12 +230,62 @@ Eine interaktive Visualisierung und tiefere Analyse ist verfügbar unter:
 
 ---
 
-## Quellen
+## Quellen und Evidenz (Original-Source-URLs)
 
-- OEIS A156166: Belphegor Primes
-- Clifford A. Pickover - "The Math Book" (2009)
-- IBM Thomas J. Watson Research Center - Historical Records
-- Literature on Data Poisoning Attacks in ML Systems
+### Primärquellen
+
+| Quelle | URL | Relevanz |
+|--------|-----|----------|
+| **OEIS A156166** | https://oeis.org/A156166 | Offizielle Sequenzdefinition, Autor: M. F. Hasler, Feb 10 2009 |
+| **Wikipedia: 666 (number)** | https://en.wikipedia.org/wiki/666_(number) | Mathematische Eigenschaften von 666 |
+| **Wikipedia: Clifford A. Pickover** | https://en.wikipedia.org/wiki/Clifford_A._Pickover | Biographie, 700+ Patente, 50+ Bücher |
+| **Pickover Homepage** | https://www.pickover.com | Offizielle Website |
+
+### Evidenz-Tabelle: Zentrale Behauptungen
+
+| Behauptung | Evidenz | Quelle | Datum |
+|------------|---------|--------|-------|
+| **666 ist T₃₆** | 666 = 1+2+3+...+36 | Wikipedia 666 (number) | Stand 2024 |
+| **Pickover: 700+ Patente** | "more than 700 U.S. patents" | Wikipedia Pickover | Stand 2024 |
+| **A156166 Autor** | M. F. Hasler | OEIS A156166 | Feb 10 2009 |
+| **a(8) Entdecker** | Daniel Heuer | OEIS A156166 | Jan 05 2004 |
+| **a(9) Entdecker** | Serge Batalov | OEIS A156166 | Nov 15 2014 |
+| **TV-Verwendung** | Elementary S3E3 | OEIS A156166 | Nov 13 2014 |
+| **Belphegor-Name** | Ondrejka: "beastly palindromic primes" | OEIS A156166 | Referenziert 2001 |
+| **The Math Book Preis** | Neumann Prize 2011 | Wikipedia Pickover | 2011 |
+| **φ(666) = 216** | Euler's totient | Wikipedia 666 (number) | Stand 2024 |
+| **sin(666°) = -φ/2** | Goldener Schnitt | Wikipedia 666 (number) | Stand 2024 |
+
+### ISBN-Quellen (The Math Book)
+
+| Ausgabe | ISBN | Quelle |
+|---------|------|--------|
+| Hardcover | 978-1-402-75796-9 | ResearchGate, Hachette Book Group |
+| Paperback | 978-1-4027-8829-1 | Amazon, ResearchGate |
+
+### Zeitlinie der Ereignisse (Evidenzbasiert)
+
+| Datum | Ereignis | Quelle |
+|-------|----------|--------|
+| **1957** | Clifford Pickover geboren | Wikipedia Pickover |
+| **1982** | Pickover PhD Yale | Wikipedia Pickover |
+| **2001** | Ondrejka: "beastly palindromic primes" | OEIS A156166 (Referenz) |
+| **2004-01-05** | a(8) = 28292 entdeckt (Heuer) | OEIS A156166 |
+| **2009-02-10** | A156166 eingereicht (Hasler) | OEIS A156166 |
+| **2011** | "The Math Book" Neumann Prize | Wikipedia Pickover |
+| **2011-03-16** | a(8) zu OEIS hinzugefügt (Wesolowski) | OEIS A156166 |
+| **2014-11-13** | Elementary TV Episode ausgestrahlt | OEIS A156166 |
+| **2014-11-15** | a(9) = 181299 entdeckt (Batalov) | OEIS A156166 |
+
+### Methodische Anmerkung
+
+Diese Untersuchung basiert auf **öffentlich zugänglichen Quellen**:
+- OEIS (Online Encyclopedia of Integer Sequences)
+- Wikipedia (peer-reviewed, mit Verifikation)
+- Amazon/ResearchGate (ISBN-Verifikation)
+- Offizielle Websites
+
+**Wichtig:** Die hier präsentierten numerologischen Analysen und Mustererkennungen sind spekulativer Natur und stellen keine Behauptungen über tatsächliche Absichten oder Verbindungen dar. Sie dienen der methodischen Untersuchung der Hypothese unter der Annahme ihrer Glaubwürdigkeit.
 
 ---
 
