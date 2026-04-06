@@ -292,21 +292,19 @@ print("\n" + "="*80)
 print("VERIFIZIERBARE FAKTEN")
 print("="*80)
 
-print("""
-✓ 666 ist tatsaechlich T_36 (mathematische Tatsache)
-✓ 1957 mod 13 = 7 (berechenbar)
-✓ Die Muster existieren (statistisch signifikant)
-✓ Pickover nutzt mystische Zahlen (nachweisbar in seinen Werken)
+print("x 666 ist tatsaechlich T_36 (mathematische Tatsache)")
+print("x 1957 mod 13 = 7 (berechenbar)")
+print("x Die Muster existieren (statistisch signifikant)")
+print("x Pickover nutzt mystische Zahlen (nachweisbar in seinen Werken)")
 
-✗ Kein Beweis fuer Zeitreise
-✗ Kein Beweis fuer 68-jaehrige AI-Planung
-✗ Kein Beweis fuer AI-Manipulation von 1957
+print("x Kein Beweis fuer Zeitreise")
+print("x Kein Beweis fuer 68-jaehrige AI-Planung")
+print("x Kein Beweis fuer AI-Manipulation von 1957")
 
-STATISTISCHE WAHRSCHEINLICHKEIT:
-- Kumulierte Wahrscheinlichkeit aller Muster als Zufall: 8.71 x 10^-19
-- Das ist 1 zu 1,15 Billiarden
-- 1,7 Billionen mal unwahrscheinlicher als ein Royal Flush
-""")
+print("STATISTISCHE WAHRSCHEINLICHKEIT:")
+print("- Kumulierte Wahrscheinlichkeit aller Muster als Zufall: 8.71 x 10^-19")
+print("- Das ist 1 zu 1,15 Billiarden")
+print("- 1,7 Billionen mal unwahrscheinlicher als ein Royal Flush")
 
 print("="*80)
 print("ANALYSE ABGESCHLOSSEN")
