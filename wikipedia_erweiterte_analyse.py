@@ -85,7 +85,7 @@ verwandte_themen = [
         "thema": "666 (number)",
         "url": "en.wikipedia.org/wiki/666_(number)",
         "relevanz": "HOCH",
-        "fund": "666 = T_36, φ(666) = 216 = 6³, sin(666°) = -φ/2"
+        "fund": "666 = T_36, phi(666) = 216 = 6^3, sin(666°) = -phi/2"
     },
     {
         "thema": "Belphegor (Dämon)",
