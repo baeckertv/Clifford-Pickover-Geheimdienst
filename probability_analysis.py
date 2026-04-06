@@ -29,7 +29,7 @@ def calculate_coincidence_probability():
     print("\n[1] 666 ALS DREIECKIGE ZAHL T_36")
     print("  - 666 ist die 36. dreieckige Zahl")
     print("  - 36 = 6², daher T_(6²)")
-    print("  - Zusätzlich: φ(666) = 216, sin(666°) = -φ/2")
+    print("  - Zusatzlich: phi(666) = 216, sin(666) = -phi/2")
     print("  - Wahrscheinlichkeit all dieser Eigenschaften gleichzeitig: ~0.001%")
     prob_666 = 0.00001  # 0.001%
     probabilities['666_properties'] = prob_666
